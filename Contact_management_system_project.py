@@ -13,14 +13,17 @@ def main_menu():
     print("6. Export contacts to a text file")
     print("7. Quit")
 
+# function to check if the format of the phone number is valid.
 def valid_phone(phone):
     pattern = r'^\+?[\d\s\(\)-]{7,15}$'
     return re.match(pattern, phone) is not None
 
+# function to check if the format of the email address is valid.
 def valid_email(email):
     pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
     return re.match(pattern, email) is not None
 
+# function to add a contact using user input.
 def add_contact():
     print("\n--- Add New Contact ---")
     name = input("Enter name: ").strip()
@@ -49,6 +52,7 @@ def add_contact():
 
     print("Contact added successfully!")
 
+# function to edit an existing contact.
 def edit_contact():
     print("\n--- Edit Existing Contact ---")
     contact_id = input("Enter the phone number or email of the contact to edit: ").strip()
@@ -86,6 +90,7 @@ def edit_contact():
 
     print("Contact updated successfully!")
 
+# function to delete a contact.
 def delete_contact():
     print("\n--- Delete Contact ---")
     contact_id = input("Enter the phone number or email of the contact to delete: ").strip()
@@ -97,6 +102,7 @@ def delete_contact():
     del contacts[contact_id]
     print("Contact deleted successfully!")
 
+# funtion to search for a contact in your contacts list.
 def search_contact():
     print("\n--- Search for Contact ---")
     contact_id = input("Enter the phone number or email of the contact to search for: ").strip()
@@ -112,6 +118,7 @@ def search_contact():
     print(f"Address: {contact['address']}")
     print(f"Notes: {contact['notes']}")
 
+# function to display all contacts that are saved.
 def display_all_contacts():
     print("\n--- All Contacts ---")
     if not contacts:
@@ -125,6 +132,7 @@ def display_all_contacts():
         print(f"Address: {contact['address']}")
         print(f"Notes: {contact['notes']}")
 
+# function to export your contact list to a txt file.
 def export_contacts():
     print("\n--- Export Contacts ---")
     filename = input("Enter the filename to save contacts (e.g., contacts.txt): ").strip()
@@ -141,6 +149,7 @@ def export_contacts():
         print(f"Contacts exported to {filename} successfully!")
     except Exception as e:
         print(f"Error exporting contacts: {e}")
+
 def main():
     while True:
         main_menu()
